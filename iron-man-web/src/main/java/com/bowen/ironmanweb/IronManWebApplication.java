@@ -3,7 +3,8 @@ package com.bowen.ironmanweb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication public class IronManWebApplication {
+@SpringBootApplication
+public class IronManWebApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(IronManWebApplication.class, args);

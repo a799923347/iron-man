@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
+  <classPathEntry location="/Users/zhaobaowen/wacai/jar/mysql-connector-java-5.1.38.jar" />
+
+  <context id="springboot">
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin" /> <!-- 此插件添加序列化标记接口到生成的模型类中 -->
+    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" /> <!-- 此插件添加equals和hashCode方法到生成的模型类中 -->
+    <plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> <!-- 此插件添加toString方法到生成的模型类中 -->
+
+    <!-- Example 插件 -->
+    <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" /> <!-- 不区分大小写的LIKE搜索插件 -->
+
+    <!-- Mapper 插件 -->
+    <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> <!-- 数据库分页插件 -->
+    <!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true" />
+      <property name="suppressDate" value="true" />
+    </commentGenerator>
+
+    <!-- 数据库连接 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+      connectionURL="jdbc:mysql://127.0.0.1:3306/bowen"
+      userId="root"
+      password="799923347">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <!-- 数据表对应的model层  -->
+    <javaModelGenerator targetPackage="com.bowen.dao.model.gen" targetProject="iron-man-dao/src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <!-- sql mapper 映射配置文件 -->
+    <sqlMapGenerator targetPackage="com.bowen.dao.mapper.gen"  targetProject="iron-man-dao/src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <!-- mybatis3中的mapper接口 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.bowen.dao.mapper.gen"  targetProject="iron-man-dao/src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
+    <table tableName="merchant_config">
+      <property name="useActualColumnNames" value="false" />
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+    </table>
+
+  </context>
+</generatorConfiguration>
