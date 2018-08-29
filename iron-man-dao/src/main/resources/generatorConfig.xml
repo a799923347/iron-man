@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
   <!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
-  <classPathEntry location="/Users/zhaobaowen/wacai/jar/mysql-connector-java-5.1.38.jar" />
+  <classPathEntry location="/Users/zhaobaowen/jar/mysql-connector-java-5.1.38.jar" />
 
   <context id="springboot">
     <plugin type="org.mybatis.generator.plugins.SerializablePlugin" /> <!-- 此插件添加序列化标记接口到生成的模型类中 -->
