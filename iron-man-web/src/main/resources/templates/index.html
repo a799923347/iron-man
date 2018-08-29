@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/layui/css/layui.css">
   <script src="/echarts/echarts.js"></script>
   <script src="/layui/layui.js"></script>
+  <link rel="stylesheet" href="layui-tab-item.css" type="text/css"/>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -30,7 +31,7 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
           <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          ####
         </a>
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
@@ -44,11 +45,11 @@
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+      <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">精品课程管理</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;" data-url="table.html" data-id="1002">列表一</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">列表三</a></dd>
             <dd><a href="">超链接</a></dd>
@@ -65,9 +66,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;">学生成绩分析</a>
           <dl class="layui-nav-child">
-            <dd>
-              <a id="nvi-score"  data-url="chart.html" data-id="11" data-title="选项a" data-type="tabAdd" href="/chart">成绩分布</a>
-            </dd>
+            <dd><a class="score-data" href="javascript:;" data-url="chart.html" data-id="1001">成绩分布</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item"><a href="">发布商品</a></li>
@@ -76,9 +75,19 @@
   </div>
 
   <div class="layui-body" id="mainContent">
-    <!-- 内容主体区域 -->
-    <!--<div style="padding: 15px;">内容主体区域</div>-->
-    <iframe width="100%" height="100%" src="chart"></iframe>
+    <div class="layui-tab " lay-filter="main-tab" lay-allowclose="true" style="height: 100%">
+      <!--<div class="layui-tab-tool open" title="收起">-->
+        <!--<i class="wdfont wdicon-xiangzuojiantou"></i>-->
+      <!--</div>-->
+      <ul class="layui-tab-title">
+        <li lay-id="0" class="layui-this"><i class="wdfont wdicon-shouye"></i>首页</li>
+      </ul>
+      <div class="layui-tab-content" style="height: 100%">
+        <div class="layui-tab-item layui-show" style="height: 100%">
+          <iframe id="0" src="table.html" class="layui-tab-iframe" style="height: 100%;width: 100%"></iframe>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="layui-footer">
@@ -86,12 +95,6 @@
     © layui.com - 底部固定区域
   </div>
 </div>
-<script>
-  //JavaScript代码区域
-  layui.use('element', function(){
-    var element = layui.element;
-
-  });
-</script>
+<script src="base.js"></script>
 </body>
 </html>

@@ -12,12 +12,8 @@
 </head>
 <body>
 
-<table class="layui-hide" id="test"></table>
-
-
-
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 600px;height:400px;" layout:fragment="content">
+<div id="main">
 
   <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
@@ -45,7 +41,11 @@
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+  </script>
+</div>
 
+<div id="main2">
+  <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart2 = echarts.init(document.getElementById('main2'));
 
@@ -92,17 +92,10 @@
         }
       ]
     });
+    myChart2.setOption(option);
   </script>
 </div>
 
-<div id="main2" style="width: 1000px;height:600px;"></div>
-<script type="text/javascript">
-
-
-
-
-
-</script>
 
 </body>
 </html>
