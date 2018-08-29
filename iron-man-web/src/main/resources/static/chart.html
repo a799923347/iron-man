@@ -14,10 +14,57 @@
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-  <legend>卡片面板</legend>
+  <legend>数据大盘</legend>
 </fieldset>
-
-<div style="padding: 10px; background-color: #F2F2F2;">
+<div class="layui-form">
+  <!--<div class="layui-form-item">-->
+    <!--<div class="layui-inline">-->
+      <!--<label class="layui-form-label">年选择器</label>-->
+      <!--<div class="layui-input-inline">-->
+        <!--<input type="text" class="layui-input" id="test2" placeholder="yyyy">-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="layui-form-item">
+    <label class="layui-form-label">学期</label>
+    <div class="layui-input-inline">
+      <select name="quiz1">
+        <option value="">请选择学期</option>
+        <option value="2017春学期" selected="">2017春学期</option>
+        <option value="2017秋学期">2017秋学期</option>
+        <option value="2018春学期">2018春学期</option>
+        <option value="2018秋学期">2018秋学期</option>
+      </select>
+    </div>
+    <label class="layui-form-label">专业</label>
+    <div class="layui-input-inline">
+      <select name="quiz3">
+        <option value="">请选择专业</option>
+        <option value="护理学">护理学</option>
+        <option value="卫生保健">卫生保健</option>
+        <option value="医学检验学">医学检验学</option>
+        <option value="医学影像学">医学影像学</option>
+      </select>
+    </div>
+    <label class="layui-form-label">科目</label>
+    <div class="layui-input-inline">
+      <select name="quiz2">
+        <option value="">请选择科目</option>
+        <option value="无机与分析化学基础">无机与分析化学基础</option>
+        <option value="有机化学" disabled="">有机化学</option>
+        <option value="解剖生理学基础">解剖生理学基础</option>
+        <option value="生物化学基础">生物化学基础</option>
+        <option value="病原生物与免疫学基础">病原生物与免疫学基础</option>
+        <option value="药用植物学基础">药用植物学基础</option>
+        <option value="药剂学">药剂学</option>
+      </select>
+    </div>
+    <div>
+      <button class="layui-btn">查询</button>
+    </div>
+  </div>
+</div>
+<div style="padding: 0px; background-color: #F2F2F2;">
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md6">
       <div class="layui-card">
@@ -65,75 +112,75 @@
               // 基于准备好的dom，初始化echarts实例
               var myChart2 = echarts.init(document.getElementById('main2'));
 
-              var option = {
-                backgroundColor: '#2c343c',
-
-                title: {
-                  text: 'Customized Pie',
-                  left: 'center',
-                  top: 20,
-                  textStyle: {
-                    color: '#ccc'
-                  }
-                },
-
-                tooltip : {
+              option = {
+                tooltip: {
                   trigger: 'item',
-                  formatter: "{a} <br/>{b} : {c} ({d}%)"
+                  formatter: "{a} <br/>{b}: {c} ({d}%)"
                 },
-
-                visualMap: {
-                  show: false,
-                  min: 80,
-                  max: 600,
-                  inRange: {
-                    colorLightness: [0, 1]
-                  }
-                },
-                series : [
+                // legend: {
+                //   orient: 'vertical',
+                //   x: 'left',
+                //   data:['直达','营销广告','搜索引擎','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+                // },
+                series: [
                   {
                     name:'访问来源',
                     type:'pie',
-                    radius : '55%',
-                    center: ['50%', '50%'],
-                    data:[
-                      {value:335, name:'直接访问'},
-                      {value:310, name:'邮件营销'},
-                      {value:274, name:'联盟广告'},
-                      {value:235, name:'视频广告'},
-                      {value:400, name:'搜索引擎'}
-                    ].sort(function (a, b) { return a.value - b.value; }),
-                    roseType: 'radius',
+                    radius: ['0%', '50%'],
                     label: {
                       normal: {
-                        textStyle: {
-                          color: 'rgba(255, 255, 255, 0.3)'
+                        formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                        backgroundColor: '#eee',
+                        borderColor: '#aaa',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        // shadowBlur:3,
+                        // shadowOffsetX: 2,
+                        // shadowOffsetY: 2,
+                        // shadowColor: '#999',
+                        // padding: [0, 7],
+                        rich: {
+                          a: {
+                            color: '#999',
+                            lineHeight: 22,
+                            align: 'center'
+                          },
+                          // abg: {
+                          //     backgroundColor: '#333',
+                          //     width: '100%',
+                          //     align: 'right',
+                          //     height: 22,
+                          //     borderRadius: [4, 4, 0, 0]
+                          // },
+                          hr: {
+                            borderColor: '#aaa',
+                            width: '100%',
+                            borderWidth: 0.5,
+                            height: 0
+                          },
+                          b: {
+                            fontSize: 16,
+                            lineHeight: 33
+                          },
+                          per: {
+                            color: '#eee',
+                            backgroundColor: '#334455',
+                            padding: [2, 4],
+                            borderRadius: 2
+                          }
                         }
                       }
                     },
-                    labelLine: {
-                      normal: {
-                        lineStyle: {
-                          color: 'rgba(255, 255, 255, 0.3)'
-                        },
-                        smooth: 0.2,
-                        length: 10,
-                        length2: 20
-                      }
-                    },
-                    itemStyle: {
-                      normal: {
-                        color: '#c23531',
-                        shadowBlur: 200,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                      }
-                    },
-
-                    animationType: 'scale',
-                    animationEasing: 'elasticOut',
-                    animationDelay: function (idx) {
-                      return Math.random() * 200;
-                    }
+                    data:[
+                      {value:335, name:'直达'},
+                      {value:310, name:'邮件营销'},
+                      {value:234, name:'联盟广告'},
+                      {value:135, name:'视频广告'},
+                      {value:1048, name:'百度'},
+                      {value:251, name:'谷歌'},
+                      {value:147, name:'必应'},
+                      {value:102, name:'其他'}
+                    ]
                   }
                 ]
               };
@@ -153,6 +200,17 @@
     </div>
   </div>
 </div>
+<script>
+  layui.use('form', 'layedit', 'laydate', function(){
+    var laydate = layui.laydate;
+
+    //年选择器
+    laydate.render({
+      elem: '#test2'
+      ,type: 'year'
+    });
+  });
+</script>
 
 </body>
 </html>
