@@ -36,13 +36,13 @@ layui.use(['element','form','table','laypage','laytpl','layer','laydate','upload
   $(".layui-side .layui-nav-item").click(function (event) {
     $(this).children('.layui-side .layui-nav-item').slideToggle();
   });
-  $(".layui-side .layui-nav-item").click(function (event) {
-    event.stopPropagation();
-    $(".layui-side .layui-nav-item").removeClass('layui-nav-itemed');
-    if ($(this).children("dl").length > 0) {
-      $(this).addClass('layui-nav-itemed');
-    }
-  });
+  // $(".layui-side .layui-nav-item").click(function (event) {
+  //   event.stopPropagation();
+  //   $(".layui-side .layui-nav-item").removeClass('layui-nav-itemed');
+  //   if ($(this).children("dl").length > 0) {
+  //     $(this).addClass('layui-nav-itemed');
+  //   }
+  // });
 
   var add_tab = function(elem){
     //var currentTabCount = $('.layui-tab[lay-filter=\'main-tab\']').children('.layui-tab-title').children('li').length;
