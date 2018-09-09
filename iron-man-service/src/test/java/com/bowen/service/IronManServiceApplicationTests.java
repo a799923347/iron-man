@@ -1,4 +1,4 @@
-package com.bowen.ironmanservice;
+package com.bowen.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
